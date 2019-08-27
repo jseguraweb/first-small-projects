@@ -1,0 +1,139 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body{
+    position: relative;
+    background-image: url("you-won.png");
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+/* --- Position of the Question Boxes --- */
+
+
+#entryDisplay{
+    z-index: 99;
+}
+
+#questionNumberOne{
+    z-index: 98;
+}
+
+#questionNumberTwo{
+    z-index: 97;
+}
+
+#questionNumberThree{
+    z-index: 96;
+}
+
+/* --- Format of the Question Boxes --- */
+
+.entryContainer {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #547980;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.greeting{
+    color: #FFF;
+    font-family: monospace;
+    font-size: 3.5em;
+}
+
+.title{
+    color: #9DE0AD;
+    font-family: monospace;
+    font-size: 5em;
+    margin: 1em 0;
+}
+
+.title span {
+    color: #E5FCC2;
+}
+
+.entryQuestion{
+    color: #FFF;
+    font-family: monospace;
+    font-size: 2em;
+    margin-bottom: 2em;
+}
+
+.entryButton{
+    font-size: 2em;
+    padding: 0.3em;
+    cursor: pointer;
+    background-color: rgb(0, 0, 0);
+    color: white;
+    border: none;
+    box-shadow: 2px 3px rgb(190, 190, 190);
+    border-radius: 15px;
+}
+
+.entryButton:active {
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0px 1px rgb(92, 92, 92);
+    transform: translateY(4px);
+}
+
+.container{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #594F4F;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.questionBox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #547980;
+    width: 60%;
+    height: 50%;
+}
+
+.question {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 3.5em;
+    color: #E5FCC2;
+}
+
+.answer{
+    font-size: 3em;
+    width: 50%;
+    text-align: center;
+}
+
+.submitButton {
+    font-size: 2em;
+    padding: 0.3em;
+    cursor: pointer;
+    background-color: #9DE0AD;
+    color: #594F4F;
+    border: none;
+    box-shadow: 2px 3px rgb(150, 150, 150);
+    border-radius: 15px;
+}
+
+.submitButton:active {
+    background-color: #9DE0AD;
+    box-shadow: 0px 1px rgb(0, 0, 0);
+    transform: translateY(4px);
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="style-quiz.css">
+</head>
+
+<body>
+
+    <section class="entryContainer" id="entryDisplay">
+        <h3 class="greeting">Welcome to the...</h3>
+        <h1 class="title"><span>W</span>orld <span>W</span>ide <span>W</span>orst quiz ever!</h1>
+        <p class="entryQuestion">Are you ready to waste 1 minute of your life?</p>
+        <button class="entryButton" onclick="entry()" type="button">GO! GO! GO!</button>
+    </section>
+
+    <section class="container" id="questionNumberOne">
+        <article class="questionBox">
+            <p class="question">How much is 2 + 2?</p>
+            <input id="answerNumberOne" class="answer" type="number">
+            <button class="submitButton" onclick="questionOne()" type="button">SUBMIT</button>
+        </article>
+    </section>
+
+    <section class="container" id="questionNumberTwo">
+        <article class="questionBox">
+            <p class="question">How much is 10 * 10?</p>
+            <input id="answerNumberTwo" class="answer" type="number">
+            <button class="submitButton" onclick="questionTwo()" type="button">SUBMIT</button>
+        </article>
+    </section>
+
+    <section class="container" id="questionNumberThree">
+        <article class="questionBox">
+            <p class="question">How much is 100 / 50?</p>
+            <input id="answerNumberThree" class="answer" type="number">
+            <button class="submitButton" onclick="questionThree()" type="button">SUBMIT</button>
+        </article>
+    </section>
+
+    <script type="text/javascript" src="script-quiz.js"></script>
+</body>
+
+</html>
