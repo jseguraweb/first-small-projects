@@ -46,6 +46,9 @@ function validate(userName) {
     }
 }
 
-
-
+console.log(validate("Anton"));
+console.log(validate("Berto"));
+console.log(validate("Coral"));
+console.log(validate("Dora"));
 console.log(validate("Eva"));
+console.log(validate("Jaime"));
