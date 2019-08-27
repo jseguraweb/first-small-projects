@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-image: url("img/god-gif.gif");
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+#containerAge {
+    position: absolute;
+    background-color: black;
+    color: aliceblue;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#containerAge h3 {
+    font-size: 3em;
+    text-transform: uppercase;
+}
+
+#containerAnswer {
+    position: relative;
+    width: 60%;
+    height: auto;
+    margin: 3em auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.answer {
+    width: 45%;
+    height: auto;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}

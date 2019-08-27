@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: black;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    color: white;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3em;
+}
+
+p {
+    font-family: 'Beth Ellen', cursive;
+    color: white;
+    font-size: 2.5em;
+    margin: 1.5em auto 1.5em auto;
+}
+
+#myYear {
+    font-size: 1em;
+}
+
+button {
+    background-color: red;
+    box-shadow: 1px 1px 5px gray;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2.5em;
+    padding: 0.5em;
+    text-transform: uppercase;
+    font-weight: 800;
+    cursor: pointer;
+}
