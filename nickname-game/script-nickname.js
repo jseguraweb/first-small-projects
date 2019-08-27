@@ -8,3 +8,16 @@ const nicknameLetterB = ["Bitter", "Barbarian", "Buffy", "Bubble", "Bullet"];
 const nicknameLetterC = ["Crusher", "Creepy", "Cranky", "Cobra", "Coyote"];
 const nicknameLetterD = ["Dirty", "Donut", "Destroyer", "Diablo", "Dragon"];
 const nicknameLetterE = ["Eternal", "Epic", "Eliminator", "Egomaniac", "Explosive"];
+
+
+function giveNicknameWithLetterA() {
+    return nicknameLetterA[Math.floor(Math.random() * 5)];
+}
+
+function validate(userName) {
+    if (userName[0] === "A") {
+        return `${giveNicknameWithLetterA()} ${userName}`;
+    }
+}
+
+console.log(validate("Anton"));
