@@ -1,82 +1,168 @@
-const init = () => {
-    let db = [];
+let jerseys = {
+    manCity: {
+        sizes: {
+            small: `manCity S`,
+            medium: `manCity M`,
+            large: `manCity L`,
+        },
+        price: 89.90
+    },
+    liverpool: {
+        sizes: {
+            small: `liverpool S`,
+            medium: `liverpool M`,
+            large: `liverpool L`,
+        },
+        price: 87.90
+    },
+    tottenham: {
+        sizes: {
+            small: `tottenham S`,
+            medium: `tottenham M`,
+            large: `tottenham L`,
+        },
+        price: 85.90
+    },
+    manUnited: {
+        sizes: {
+            small: `manUnited S`,
+            medium: `manUnited M`,
+            large: `manUnited L`,
+        },
+        price: 91.90
+    },
+    chelsea: {
+        sizes: {
+            small: `chelsea S`,
+            medium: `chelsea M`,
+            large: `chelsea L`,
+        },
+        price: 82.90
+    },
+    arsenal: {
+        sizes: {
+            small: `arsenal S`,
+            medium: `arsenal M`,
+            large: `arsenal L`,
+        },
+        price: 84.90
+    }
+};
 
-    const create = (paramOne) => {
-        db.push(paramOne);
-        const dbArrayLength = db.length;
+let pants = {
+    nike: {
+        sizes: {
+            small: `nike S`,
+            medium: `nike M`,
+            large: `nike L`,
+        },
+        price: 29.90
+    },
+    adidas: {
+        sizes: {
+            small: `adidas S`,
+            medium: `adidas M`,
+            large: `adidas L`,
+        },
+        price: 24.50
+    },
+    puma: {
+        sizes: {
+            small: `puma S`,
+            medium: `puma M`,
+            large: `puma L`,
+        },
+        price: 26.80
+    },
+    newBalance: {
+        sizes: {
+            small: `newBalance S`,
+            medium: `newBalance M`,
+            large: `newBalance L`,
+        },
+        price: 25.50
+    }
+};
 
-        return `New element added! The new length of the array is ${dbArrayLength}`;
+let socks = {
+    red: {
+        sizes: {
+            small: `red S`,
+            medium: `red M`,
+            large: `red L`,
+        },
+        price: 14.90
+    },
+    blue: {
+        sizes: {
+            small: `blue S`,
+            medium: `blue M`,
+            large: `blue L`,
+        },
+        price: 12.90
+    },
+    white: {
+        sizes: {
+            small: `white S`,
+            medium: `white M`,
+            large: `white L`,
+        },
+        price: 15.70
+    },
+    black: {
+        sizes: {
+            small: `black S`,
+            medium: `black M`,
+            large: `black L`,
+        },
+        price: 16.90
+    },
+};
+
+const shoppingList = () => {
+    const shoppingCart = [];
+
+    const add = (selectedItem) => {
+        shoppingCart.push(selectedItem);
+
+        console.log(`\nYou added one item to your shopping cart: ${selectedItem}`);
+    };
+
+    const remove = (index) => {
+        if (shoppingCart[index]) {
+            shoppingCart.splice(index, 1);
+        } else {
+            return `\nThis item doesn't exist`;
+        }
+        return `\nYou removed one item from your shopping cart: ${selectedItem}`;
     };
 
     const read = () => {
-        let dbCopy = [...db];
-
-        return dbCopy;
-    };
-
-    const update = (index, newElement) => {
-
-        if (index >= 0 && index <= (db.length - 1)) {
-            db[index] = newElement;
+        const minimumIndex = shoppingCart[0];
+        if (shoppingCart > minimumIndex) {
+            return `\nThis is your current shopping cart: ${[...shoppingCart]}`;
         } else {
-            return create(newElement);
+            return `Your shopping cart is empty`
         }
 
-        return db;
-    };
+    }
 
-    const remove = (deleteIndex) => {
+    const options = [add, remove, read];
 
-        if (deleteIndex >= 0 && deleteIndex <= (db.length - 1)) {
-            db.splice(deleteIndex, 1);
-        } else {
-            return `ERROR!!!`;
-        }
-
-        return db;
-    };
-
-    let api = [create, read, update, remove];
-
-    return api;
+    return options;
 };
 
-const createInDb = init();
+const myShoppingList = shoppingList();
 
-const createItem = createInDb[0];
-const readArray = createInDb[1];
-const updateItem = createInDb[2];
-const removeItem = createInDb[3];
+const addInCart = myShoppingList[0];
+const removeItem = myShoppingList[1];
+const readList = myShoppingList[2];
 
-console.log(`\nChecking out what's in my database:`)
-console.log(createInDb[1]());
+console.log(readList());
 
-createItem("Bread");
-createItem("Butter");
-createItem("Ham");
-createItem("Cheese");
+addInCart(jerseys.liverpool.sizes.large);
+addInCart(pants.newBalance.sizes.medium);
+addInCart(socks.red.sizes.large);
+addInCart(socks.red.sizes.medium);
 
-console.log(`\nChecking out my database after pushing 4 items inside it:`)
-console.log(readArray()); // read
-
-console.log(`\nI'm gonna push a new item ('Milk') inside the database:`)
-console.log(createItem("Milk")); // 
-console.log(readArray()); // read
-
-console.log(`\nNow I'm gonna push another new item ('Banana') inside the database:`)
-console.log(createItem("Banana"));
-console.log(readArray()); // read
-
-console.log(`\nNow I'm gonna update the first item: I'll change 'Bread' for 'Chocolate'`)
-console.log(updateItem(0, "Chocolate"));
-console.log(readArray()); // read
-
-console.log(`\nNow I'm gonna update the third item: I'll change 'Ham' for 'Vanilla'`)
-console.log(updateItem(2, "Vanilla"));
-console.log(readArray()); // read
-
-console.log(`\nI'm gonna delete the 'Cheese' (item 4 from my database)`)
-console.log(removeItem(3)); // delete
-
-console.log(`\nThis is the current status of my database:`)
-console.log(readArray()); // read
+console.log(readList());
