@@ -204,3 +204,5 @@ function validate(userName) { // TO DO: userName will be removed from the descri
 
 console.log(validate("a"));
 
+// TO DO: an input where the result will be printed
+

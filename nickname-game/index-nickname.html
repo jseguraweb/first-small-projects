@@ -7,13 +7,41 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Nickname Game</title>
     <link rel="stylesheet" href="style-nickname.css">
+    <link href="https://fonts.googleapis.com/css?family=Patua+One&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="container">
+    <header>
+        <h1>Nickname Generator</h1>
+        <h2>Didn't you always wanted to be a <em>badass</em>?</h2>
+    </header>
 
-    <p>Enter your name here:</p>
-    <input type="text">
-    <button type="button" onclick="validate()">SUBMIT</button>
+    <section>
+
+        <article>
+            <img id="badass-guy" src="img/badass-guy.png" alt="badass-guy">
+        </article>
+
+        <article>
+            <div class="input-info">
+                <p>Enter your name here:</p>
+                <input type="text" name="username" id="user-name">
+                <button type="button" onclick="validate()">SUBMIT</button>
+            </div>
+            <div class="output-info">
+                <p>Get your new name here:</p>
+                <input type="text" name="result" id="result-name">
+            </div>
+        </article>
+
+        <article>
+            <img id="bike-guy" src="img/bike-guy.png" alt="bike-guy">
+        </article>
+
+    </section>
+    <footer>
+        <p>created by Jaime Segura</p>
+    </footer>
 
     <script type="text/javascript" src="script-nickname.js"></script>
 </body>
