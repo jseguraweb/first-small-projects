@@ -41,25 +41,33 @@ const shoppingList = () => {
         const itemPrice = generalItem[specificItem].price;
 
         shoppingCart.push(itemName);
-        calculation(generalItem, specificItem);
+        addingCalculation(generalItem, specificItem);
 
         console.log(`\nYou added one item to your shopping cart: ${itemName} (${itemPrice}€)`);
     };
 
-    const calculation = (typeOfItem, itemInCart) => {
+    const addingCalculation = (typeOfItem, itemInCart) => {
         const itemPrice = typeOfItem[itemInCart].price;
         currentPrice = currentPrice + itemPrice;
 
         finalPrice.splice(0, 1, currentPrice);
-    }
+    };
 
-    const remove = (index) => {
-        if (shoppingCart[index]) {
-            shoppingCart.splice(index, 1);
-        } else {
-            return `\nThis item doesn't exist`;
-        }
-        return `\nYou removed one item from your shopping cart: ${itemName}`;
+    const remove = (generalItem, specificItem) => {
+        const itemName = generalItem[specificItem].name;
+        const itemPrice = generalItem[specificItem].price;
+
+        shoppingCart.push(itemName);
+        subtractingCalculation(generalItem, specificItem);
+
+        console.log(`\nYou removed one item from your shopping cart: ${itemName} (${itemPrice}€)`);
+    };
+
+    const subtractingCalculation = (typeOfItem, itemInCart) => {
+        const itemPrice = typeOfItem[itemInCart].price;
+        currentPrice = currentPrice - itemPrice;
+
+        finalPrice.splice(0, 1, currentPrice);
     };
 
     const read = () => {
@@ -71,7 +79,7 @@ const shoppingList = () => {
             return `\nYour shopping cart is empty`
         }
 
-    }
+    };
 
     const options = [add, remove, read];
 
@@ -98,3 +106,9 @@ addInCart(salmon, 1);
 addInCart(butter, 0);
 
 console.log(readList());
+
+removeItem(vegetables, 0);
+removeItem(fruit, 0);
+
+console.log(readList());
+
