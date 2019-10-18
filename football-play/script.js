@@ -6,14 +6,46 @@ class Player {
         this.age = Math.floor((new Date() - new Date(year, month - 1, day)) / 31556952000);
     }
 
+    // hideFingers() {
+
+    // }
+
+    // guessFingers() {
+
+    // }
+
+}
+
+class Game {
+
+    constructor(playerOne, playerTwo) {
+        this.playerOne = playerOne;
+        this.playerTwo = playerTwo;
+        return `${playerOne} is going to play against ${playerTwo}`
+    }
+
+    whoStarts() {
+        const num = Math.floor(Math.random() * 2);
+        const playerStarts = (num === 0) ? this.playerOne.name : this.playerTwo.name;
+        return `${playerStarts} starts`;
+    }
+
+    // announceWinner() {
+
+    // }
+
+    // play() {
+
+    // }
+
 }
 
 const jaime = new Player("Jaime", "Segura", 3, 8, 1988);
-
-// const isOver18 = name => {
-//     (name.birthday - 18 >= 18) ? true : false;
-// };
+const peter = new Player("Peter", "Griffin", 27, 5, 1970);
+const roundOne = new Game(jaime, peter);
 
 console.log(jaime);
+console.log(peter);
 
-// console.log(isOver18(jaime));
+console.log(roundOne.whoStarts());
+
