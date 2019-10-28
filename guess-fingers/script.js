@@ -6,9 +6,11 @@ class Player {
         this.age = Math.floor((new Date() - new Date(year, month - 1, day)) / 31556952000);
     }
 
-    // hideFingers() {
+    hideFingers() {
 
-    // }
+
+        return hiddenFingers;
+    }
 
     // guessFingers() {
 

@@ -1,114 +1,146 @@
-const soyaMilk = { name: "soya milk", price: 1.80 };
-const almondMilk = { name: "almond milk", price: 1.60 };
-const fullFatMilk = { name: "full fat milk", price: 0.90 };
-const saltedButter = { name: "salted butter", price: 1.10 };
-const unsaltedButter = { name: "unsalted butter", price: 1.05 };
-const salmon50gr = { name: "salmon 50 gr", price: 2.50 };
-const salmon100gr = { name: "salmon 100 gr", price: 3.90 };
-const darkChocolate = { name: "dark chocolate", price: 1.90 };
-const milkChocolate = { name: "milk chocolate", price: 1.80 };
-const almondChocolate = { name: "almond chocolate", price: 2.20 };
-const cokeNormal = { name: "coke", price: 1.10 };
-const cokeLight = { name: "coke light", price: 1.10 };
-const cokeZero = { name: "coke zero", price: 1.10 };
-const bananas = { name: "bananas", price: 1.90 };
-const apples = { name: "apples", price: 1.50 };
-const kiwis = { name: "kiwis", price: 1.60 };
-const gorgonzola = { name: "gorgonzola", price: 2.90 };
-const parmesan = { name: "parmesan", price: 3.70 };
-const goatCheese = { name: "goat cheese", price: 3.20 };
-const broccoli = { name: "broccoli", price: 1.30 };
-const zucchini = { name: "zucchini", price: 0.80 };
-const tomatoes = { name: "tomatoes", price: 1.40 };
+/**
+ * 
+ * 
+ * CLASSES:
+ * 
+ * 
+ */
 
-const milk = [soyaMilk, almondMilk, fullFatMilk];
-const butter = [saltedButter, unsaltedButter];
-const salmon = [salmon50gr, salmon100gr];
-const chocolate = [darkChocolate, milkChocolate, almondChocolate];
-const coke = [cokeNormal, cokeLight, cokeZero];
-const fruit = [bananas, apples, kiwis];
-const cheese = [gorgonzola, parmesan, goatCheese];
-const vegetables = [broccoli, zucchini, tomatoes];
+class Item {
+    constructor(name, price, type) {
+        this.name = name;
+        this.price = price;
+        this.type = type;
+    }
+}
 
-const shoppingList = () => {
-    const shoppingCart = [];
-    const finalPrice = [];
+class Order {
+    constructor(name) {
+        this.name = name;
+        this.items = [];
+    }
 
-    let currentPrice = 0;
+    add(itemNew, quantity = 1) {
+        const itemFound = this.items.find(item => item.name == itemNew.name);
 
-    const add = (generalItem, specificItem) => {
-        const itemName = generalItem[specificItem].name;
-        const itemPrice = generalItem[specificItem].price;
-
-        shoppingCart.push(itemName);
-        addingCalculation(generalItem, specificItem);
-
-        console.log(`\nYou added one item to your shopping cart: ${itemName} (${itemPrice}€)`);
-    };
-
-    const addingCalculation = (typeOfItem, itemInCart) => {
-        const itemPrice = typeOfItem[itemInCart].price;
-        currentPrice = currentPrice + itemPrice;
-
-        finalPrice.splice(0, 1, currentPrice);
-    };
-
-    const remove = (generalItem, specificItem) => {
-        const itemName = generalItem[specificItem].name;
-        const itemPrice = generalItem[specificItem].price;
-
-        shoppingCart.push(itemName);
-        subtractingCalculation(generalItem, specificItem);
-
-        console.log(`\nYou removed one item from your shopping cart: ${itemName} (${itemPrice}€)`);
-    };
-
-    const subtractingCalculation = (typeOfItem, itemInCart) => {
-        const itemPrice = typeOfItem[itemInCart].price;
-        currentPrice = currentPrice - itemPrice;
-
-        finalPrice.splice(0, 1, currentPrice);
-    };
-
-    const read = () => {
-        const minimumIndex = shoppingCart[0];
-
-        if (shoppingCart >= minimumIndex) {
-            return `\nThis is your current shopping cart: ${[...shoppingCart]}\nThis is the current price: ${parseFloat([...finalPrice]).toFixed(2)} €`;
-        } else {
-            return `\nYour shopping cart is empty`
+        if (itemFound) {
+            itemFound.quantity += quantity
+        }
+        else {
+            this.items.push({ ...itemNew, quantity })
         }
 
-    };
+    }
 
-    const options = [add, remove, read];
+    readList() {
 
-    return options;
-};
+        return this.items;
+    }
 
-const myShoppingList = shoppingList();
+    howManyItems() {
+        let amountOfItems = this.items.reduce((totalAmount, element) => totalAmount += element.quantity, 0);
 
-const addInCart = myShoppingList[0];
-const removeItem = myShoppingList[1];
-const readList = myShoppingList[2];
+        if (amountOfItems === 0) { return `your shopping cart is empty` }
+        else if (amountOfItems < 2) { return `you have ${this.items.length} item in your shopping cart` }
+        return `you have ${amountOfItems} items in your shopping cart`;
+    }
 
-console.log(readList());
+    totalPrice(shipping = 3.75) {
+        const pricePerElement = this.items.map(element => element.price * element.quantity);
+        const total = pricePerElement.reduce((total, element) => total += element, 0).toFixed(2);
+        const totalWithShippingCosts = parseFloat(total) + shipping;
+        if (total >= 20) { return `the total price is: ${total}€` }
+        return `the total price is: ${totalWithShippingCosts}€ (${total}€ + ${shipping}€ shipping costs)`;
+    }
+}
 
-addInCart(milk, 2);
-addInCart(coke, 1);
-addInCart(vegetables, 0);
-addInCart(vegetables, 1);
-addInCart(fruit, 1);
-addInCart(fruit, 0);
-addInCart(cheese, 0);
-addInCart(chocolate, 0);
-addInCart(salmon, 1);
-addInCart(butter, 0);
+/** 
+ * 
+ * 
+ * INGREDIENTS:
+ * 
+ * 
+ * */
 
-console.log(readList());
+const soyaMilk = new Item("soya milk", 1.80, "milk");
+const almondMilk = new Item("almond milk", 1.60, "milk");
+const fullFatMilk = new Item("full fat milk", 0.90, "milk");
+const saltedButter = new Item("salted butter", 1.10, "butter");
+const unsaltedButter = new Item("unsalted butter", 1.05, "butter");
+const salmon50gr = new Item("salmon 50 gr", 2.50, "salmon");
+const salmon100gr = new Item("salmon 100 gr", 3.90, "salmon");
+const darkChocolate = new Item("dark chocolate", 1.90, "chocolate");
+const milkChocolate = new Item("milk chocolate", 1.80, "chocolate");
+const almondChocolate = new Item("almond chocolate", 2.20, "chocolate");
+const cokeNormal = new Item("coke", 1.10, "coke");
+const cokeLight = new Item("coke light", 1.10, "coke");
+const cokeZero = new Item("coke zero", 1.10, "coke");
+const bananas = new Item("bananas", 1.90, "fruit");
+const apples = new Item("apples", 1.50, "fruit");
+const kiwis = new Item("kiwis", 1.60, "fruit");
+const gorgonzola = new Item("gorgonzola", 2.90, "cheese");
+const parmesan = new Item("parmesan", 3.70, "cheese");
+const goatCheese = new Item("goat cheese", 3.20, "cheese");
+const broccoli = new Item("broccoli", 1.30, "vegetable");
+const zucchini = new Item("zucchini", 0.80, "vegetable");
+const tomatoes = new Item("tomatoes", 1.40, "vegetable");
 
-removeItem(vegetables, 0);
-removeItem(fruit, 0);
+/**
+ * 
+ * 
+ * CREATE YOUR NEW ORDER/S:
+ * 
+ * 
+ */
 
-console.log(readList());
+const jaimeList = new Order("Jaime");
 
+const peterList = new Order("Peter");
+
+/**
+ * 
+ * 
+ * GO SHOPPING:
+ * 
+ * 
+ */
+
+jaimeList.add(tomatoes);
+jaimeList.add(tomatoes);
+jaimeList.add(broccoli);
+jaimeList.add(cokeZero);
+
+peterList.add(zucchini);
+peterList.add(gorgonzola);
+peterList.add(broccoli, 2);
+peterList.add(cokeZero);
+peterList.add(gorgonzola);
+peterList.add(darkChocolate, 3);
+peterList.add(bananas, 4);
+peterList.add(salmon100gr, 2);
+
+/**
+ * 
+ * 
+ * CHECK YOUR SHOPPING CART:
+ * 
+ * 
+ */
+
+console.log(`\n${jaimeList.name}, this is your current shopping cart:\n`, jaimeList.readList());
+console.log(`\n${jaimeList.name},`, jaimeList.howManyItems());
+
+// console.log(`\n${peterList.name}, this is your current shopping cart:\n`, peterList.readList());
+// console.log(`\n${peterList.name},`, peterList.howManyItems());
+
+/**
+ * 
+ * 
+ * PAYMENT: 
+ * 
+ *  
+ */
+
+console.log(`\n${jaimeList.name},`, jaimeList.totalPrice(), `\n`);
+
+// console.log(`\n${peterList.name},`, peterList.totalPrice(), `\n`);
